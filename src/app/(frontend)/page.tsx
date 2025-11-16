@@ -89,15 +89,15 @@ const Page = () => {
         </div>
         <FavoriteSongs />
         <Card title="Currently working on" titlePosition="left">
-          <b>Arevo Digital</b>
+          <b>Arevo Plugins</b>
           <p className="mb-2">
-            I&apos;m currently working on creating new Web Agency, that focuses on creating websites for
-            small businesses, all using Payload CMS. We are currently a small team of only 2 people,
-            and we are looking for new clients to work with.
+            I&apos;m currently working on creating a centralized repository of plugins for Payload CMS.
+            All community plugins are currently found through an arbitrary GitHub tag, and i would like to change that.
+            Built under my Payload-specific website Arevo Digital, which is managed by a friend of mine and me.
           </p>
-          <Link href="https://arevodigital.dk" className="w-full">
+          <Link href="https://plugins.arevodigital.dk" className="w-full">
             <ActionButton icon={<ArrowRight className="size-4" />} className="w-full">
-              Learn more at Arevo Digital
+              Visit Arevo Plugins
             </ActionButton>
           </Link>
         </Card>

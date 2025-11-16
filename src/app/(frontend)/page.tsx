@@ -91,7 +91,7 @@ const Page = () => {
         <Card title="Currently working on" titlePosition="left">
           <b>Arevo Digital</b>
           <p className="mb-2">
-            I'm currently working on creating new Web Agency, that focuses on creating websites for
+            I&apos;m currently working on creating new Web Agency, that focuses on creating websites for
             small businesses, all using Payload CMS. We are currently a small team of only 2 people,
             and we are looking for new clients to work with.
           </p>

@@ -1,5 +1,6 @@
 export { FaceLooker } from './face-looker'
-export { Action } from './reusables/action'
-export { Card } from './reusables/card'
-export { Spinner } from './reusables/spinner'
+export { ActionGroup, ActionButton } from './reusables/action'
+export { default as Card } from './reusables/card'
+export { default as Spinner } from './reusables/spinner'
+
 

@@ -541,6 +541,7 @@ export const ThemeConfig: GlobalConfig = {
           name: 'enableDarkMode',
           label: 'Enable Darkmode',
           type: 'checkbox',
+          defaultValue: true,
         },
         {
           name: 'background',

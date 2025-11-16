@@ -12,7 +12,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { ThemeConfig } from '@/globals/ThemeConfig/Component'
 import localization from '@/localization.config'
 import { PublicContextProps } from '@/utilities/publicContextProps'
-import './[[...slugs]]/globals.css'
+import './globals.css'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 

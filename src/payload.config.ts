@@ -53,6 +53,8 @@ import { hasPermission } from './utilities/checkPermission'
 import { PageConfig } from './globals/PageConfig/config'
 import { Telephone } from './fields/formBuilder/telephone'
 
+import FavoriteSongs from './collections/favorite-songs'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -164,7 +166,7 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.MONGODB_URI || '',
   }),
-  collections: [Pages, Posts, Media, Categories, Users, Roles],
+  collections: [Pages, Posts, Media, Categories, Users, Roles, FavoriteSongs],
   cors: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
   csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
   globals: [ThemeConfig, Header, Footer, PageConfig],

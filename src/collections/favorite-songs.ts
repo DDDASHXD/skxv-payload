@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../access/authenticated'
 import { anyone } from '../access/anyone'
+import { revalidateHome, revalidateHomeAfterDelete } from '../hooks/revalidate-home'
 
 const FavoriteSongs: CollectionConfig = {
   slug: 'favorite-songs',
@@ -13,6 +14,10 @@ const FavoriteSongs: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
+  },
+  hooks: {
+    afterChange: [revalidateHome],
+    afterDelete: [revalidateHomeAfterDelete],
   },
   fields: [
     {

@@ -23,6 +23,9 @@ import {
   profilePageStructuredData,
 } from '@/utilities/structured-data'
 
+// Revalidate this page every 60 seconds (ISR fallback)
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Home of SKXV',
   description:

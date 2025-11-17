@@ -1,7 +1,7 @@
 // storage-adapter-import-placeholder
 // import { postgresAdapter } from '@payloadcms/db-postgres'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+// import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob' // Disabled in favor of UploadThing
 import { en } from '@payloadcms/translations/languages/en'
 import { de } from '@payloadcms/translations/languages/de'
 
@@ -54,9 +54,21 @@ import { PageConfig } from './globals/PageConfig/config'
 import { Telephone } from './fields/formBuilder/telephone'
 
 import FavoriteSongs from './collections/favorite-songs'
+import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
+import https from 'https'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+
+const storageAdapter = uploadthingStorage({
+  collections: {
+    media: true,
+  },
+  options: {
+    token: process.env.UPLOADTHING_TOKEN,
+    acl: 'public-read',
+  },
+})
 
 const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Payblocks Website Template` : 'Payblocks Website Template'
@@ -171,6 +183,7 @@ export default buildConfig({
   csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
   globals: [ThemeConfig, Header, Footer, PageConfig],
   plugins: [
+    storageAdapter,
     redirectsPlugin({
       collections: ['pages', 'posts'],
       overrides: {
@@ -257,12 +270,13 @@ export default buildConfig({
         },
       },
     }),
-    vercelBlobStorage({
-      collections: {
-        media: true,
-      },
-      token: process.env.BLOB_READ_WRITE_TOKEN || '',
-    }),
+    // Disabled in favor of UploadThing storage
+    // vercelBlobStorage({
+    //   collections: {
+    //     media: true,
+    //   },
+    //   token: process.env.BLOB_READ_WRITE_TOKEN || '',
+    // }),
     OAuth2Plugin({
       enabled: googleAuthActive,
       strategyName: 'google',

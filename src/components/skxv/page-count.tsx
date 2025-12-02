@@ -10,7 +10,7 @@ const PageViews = () => {
   const [hasFetched, setHasFetched] = React.useState(false)
 
   React.useEffect(() => {
-    axios.get('/api/get-view-count?websiteId=a0c36e6f-4bbd-4d0a-a921-ff01ecf264cd').then((res) => {
+    axios.get('/api/get-view-count?websiteId=f843ebec-8bc9-4096-8eb3-859a1bfa871c').then((res) => {
       setPageViews(res.data.viewCount)
       setHasFetched(true)
     })

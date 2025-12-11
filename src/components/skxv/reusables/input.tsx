@@ -67,8 +67,8 @@ const Input = ({ className, slimCaret = false, blink = false, ...props }: InputP
       />
       <div
         className={cn(
-          'absolute top-0 w-4 bg-white mix-blend-difference transition-all duration-75',
-          slimCaret ? 'w-1' : 'w-4',
+          'absolute top-0 w-3 bg-white mix-blend-difference transition-all duration-75',
+          slimCaret ? 'w-1' : 'w-3',
           blink ? 'animate-blink' : '',
         )}
         style={{ left: `${caretPixelPosition}px`, height: `${caretHeight}px` }}

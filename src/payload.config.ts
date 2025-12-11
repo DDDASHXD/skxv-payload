@@ -54,6 +54,10 @@ import { PageConfig } from './globals/PageConfig/config'
 import { Telephone } from './fields/formBuilder/telephone'
 
 import FavoriteSongs from './collections/favorite-songs'
+import Confessions from './collections/confessions'
+import Projects from './collections/projects'
+import Plugins from './collections/plugins'
+
 import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
 import https from 'https'
 
@@ -178,7 +182,18 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.MONGODB_URI || '',
   }),
-  collections: [Pages, Posts, Media, Categories, Users, Roles, FavoriteSongs],
+  collections: [
+    Pages,
+    Posts,
+    Media,
+    Categories,
+    Users,
+    Roles,
+    FavoriteSongs,
+    Confessions,
+    Projects,
+    Plugins,
+  ],
   cors: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
   csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
   globals: [ThemeConfig, Header, Footer, PageConfig],

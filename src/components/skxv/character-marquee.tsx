@@ -1,5 +1,6 @@
 'use client'
 
+import { cn } from '@/utilities/cn'
 import React from 'react'
 
 interface CharacterMarqueeProps {
@@ -7,6 +8,7 @@ interface CharacterMarqueeProps {
   className?: string
   speed?: number
   pauseDuration?: number
+  textClassName?: string
 }
 
 const CharacterMarquee: React.FC<CharacterMarqueeProps> = ({
@@ -14,6 +16,7 @@ const CharacterMarquee: React.FC<CharacterMarqueeProps> = ({
   className = '',
   speed = 200,
   pauseDuration = 3000,
+  textClassName = '',
 }) => {
   const [visibleText, setVisibleText] = React.useState(text)
   const [isOverflowing, setIsOverflowing] = React.useState(false)
@@ -111,7 +114,7 @@ const CharacterMarquee: React.FC<CharacterMarqueeProps> = ({
       </span>
 
       {/* Visible text */}
-      <span className="inline-block whitespace-pre">{visibleText}</span>
+      <span className={cn('inline-block whitespace-pre', textClassName)}>{visibleText}</span>
     </div>
   )
 }

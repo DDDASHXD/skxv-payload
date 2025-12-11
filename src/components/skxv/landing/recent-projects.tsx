@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 import InlineLink from '../reusables/inline-link'
 import Card from '../reusables/card'
 
@@ -26,6 +26,36 @@ const RecentProjects = () => {
         {projects.map((project) => (
           <li key={project.title}>
             <InlineLink href={project.link}>{project.title}</InlineLink> - {project.description}
+          </li>
+        ))}
+      </ul>
+    </Card>
+  )
+}
+
+export default RecentProjects
+*/
+
+import React from 'react'
+import InlineLink from '../reusables/inline-link'
+import Card from '../reusables/card'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
+
+const RecentProjects = async () => {
+  const payload = await getPayload({ config: configPromise })
+  const projects = await payload.find({
+    collection: 'projects',
+    limit: 10,
+    sort: '-date',
+  })
+  return (
+    <Card title="Recent projects">
+      <ul className="list-inside list-disc">
+        {projects.docs.map((project) => (
+          <li key={project.id}>
+            <InlineLink href={project.link || ''}>{project.title}</InlineLink> -{' '}
+            {project.description}
           </li>
         ))}
       </ul>

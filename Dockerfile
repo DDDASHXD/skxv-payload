@@ -1,24 +1,34 @@
-FROM node:18.8-alpine as base
-
-FROM base as builder
-
-WORKDIR /home/node/app
-COPY package*.json ./
-
-COPY . .
-RUN yarn install
-RUN yarn build
-
-FROM base as runtime
-
-ENV NODE_ENV=production
-
-WORKDIR /home/node/app
-COPY package*.json  ./
-COPY yarn.lock ./
-
-RUN yarn install --production
-
-EXPOSE 3000
-
-CMD ["node", "dist/server.js"]
+# ---- base ----
+  FROM node:20-alpine AS base
+  WORKDIR /app
+  
+  # pnpm
+  RUN corepack enable
+  
+  # ---- deps ----
+  FROM base AS deps
+  COPY package.json pnpm-lock.yaml ./
+  RUN pnpm install --frozen-lockfile
+  
+  # ---- build ----
+  FROM base AS builder
+  COPY --from=deps /app/node_modules ./node_modules
+  COPY . .
+  RUN pnpm build
+  
+  # ---- runtime ----
+  FROM node:20-alpine AS runtime
+  WORKDIR /app
+  ENV NODE_ENV=production
+  
+  # If you use sharp (Next Image Optimization), you may need libc6-compat:
+  # RUN apk add --no-cache libc6-compat
+  
+  # Copy standalone server + static assets
+  COPY --from=builder /app/.next/standalone ./
+  COPY --from=builder /app/.next/static ./.next/static
+  COPY --from=builder /app/public ./public
+  
+  EXPOSE 3000
+  CMD ["node", "server.js"]
+  

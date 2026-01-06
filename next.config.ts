@@ -11,6 +11,7 @@ import bundleAnalyzer from '@next/bundle-analyzer'
 export const NEXT_PUBLIC_SERVER_URL = serverUrl
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   experimental: {
     staticGenerationRetryCount: 1,
     staticGenerationMaxConcurrency: 8,

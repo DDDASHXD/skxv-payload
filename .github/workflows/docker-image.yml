@@ -37,7 +37,7 @@ jobs:
             ${{ env.IMAGE }}:latest
             ${{ env.IMAGE }}:${{ github.sha }}
           build-args: |
-            PAYLOAD_SECRET=demo-payload-secret
+            PAYLOAD_SECRET=${{ secrets.PAYLOAD_SECRET }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 

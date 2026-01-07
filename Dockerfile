@@ -14,7 +14,9 @@
   FROM base AS builder
 
   ARG PAYLOAD_SECRET
+  ARG MONGODB_URI
   ENV PAYLOAD_SECRET=$PAYLOAD_SECRET
+  ENV MONGODB_URI=$MONGODB_URI
   
   COPY --from=deps /app/node_modules ./node_modules
   COPY . .

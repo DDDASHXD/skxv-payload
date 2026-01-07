@@ -38,6 +38,7 @@ jobs:
             ${{ env.IMAGE }}:${{ github.sha }}
           build-args: |
             PAYLOAD_SECRET=${{ secrets.PAYLOAD_SECRET }}
+            MONGODB_URI={{ secrets.MONGODB_URI }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 

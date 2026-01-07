@@ -12,6 +12,10 @@
   
   # ---- build ----
   FROM base AS builder
+
+  ARG PAYLOAD_SECRET
+  ENV PAYLOAD_SECRET=$PAYLOAD_SECRET
+  
   COPY --from=deps /app/node_modules ./node_modules
   COPY . .
   RUN pnpm build

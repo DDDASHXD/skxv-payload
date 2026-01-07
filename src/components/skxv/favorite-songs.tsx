@@ -2,9 +2,9 @@ import React from 'react'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import Card from './reusables/card'
-import { Media } from '../Media'
 import CharacterMarquee from './character-marquee'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const FavoriteSongs = async () => {
   const payload = await getPayload({ config: configPromise })
@@ -18,8 +18,14 @@ const FavoriteSongs = async () => {
         {favoriteSongs.docs.map((song) => (
           <Link href={song.link || ''} key={song.id} className="cursor-pointer">
             <div className="group flex flex-col">
-              {song.cover && (
-                <Media resource={song.cover} imgClassName="w-full aspect-square object-cover" />
+              {song.cover && typeof song.cover === 'object' && song.cover.url && (
+                <Image
+                  src={song.cover.url}
+                  alt={song.title || ''}
+                  width={500}
+                  height={500}
+                  className="aspect-square w-full object-cover"
+                />
               )}
               <CharacterMarquee
                 text={song.title || ''}

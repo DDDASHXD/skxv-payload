@@ -71,10 +71,15 @@ export async function GET(request: Request) {
 
     const stats = await response.json()
 
+    // Umami API returns pageviews and visitors as numbers directly
+    // See: https://docs.umami.is/docs/api/website-stats
+    const pageviews = stats.pageviews ?? 0
+    const visitors = stats.visitors ?? 0
+
     return NextResponse.json({
       success: true,
-      viewCount: stats.pageviews?.value || 0,
-      visitors: stats.visitors?.value || 0,
+      viewCount: pageviews,
+      visitors: visitors,
       stats,
     })
   } catch (error) {

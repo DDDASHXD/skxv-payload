@@ -10,10 +10,20 @@ const PageViews = () => {
   const [hasFetched, setHasFetched] = React.useState(false)
 
   React.useEffect(() => {
-    axios.get('/api/get-view-count?websiteId=9c2eac36-9ef2-4ad1-b9ce-ab71adf608cd').then((res) => {
-      setPageViews(res.data.viewCount)
-      setHasFetched(true)
-    })
+    axios
+      .get('/api/get-view-count?websiteId=9c2eac36-9ef2-4ad1-b9ce-ab71adf608cd')
+      .then((res) => {
+        if (res.data.success) {
+          setPageViews(res.data.viewCount)
+        } else {
+          console.error('Failed to fetch page views:', res.data.error)
+        }
+        setHasFetched(true)
+      })
+      .catch((error) => {
+        console.error('Error fetching page views:', error)
+        setHasFetched(true)
+      })
   }, [])
 
   return (

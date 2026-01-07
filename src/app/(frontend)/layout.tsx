@@ -127,8 +127,8 @@ export default async function RootLayout({
         <Script
           async
           defer
-          src="https://umami.arevodigital.dk/script.js"
-          data-website-id="f843ebec-8bc9-4096-8eb3-859a1bfa871c"
+          src="https://umami.skxv.dev/script.js"
+          data-website-id="9c2eac36-9ef2-4ad1-b9ce-ab71adf608cd"
         />
         <Providers>
           <Analytics />

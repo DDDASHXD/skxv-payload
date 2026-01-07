@@ -32,6 +32,10 @@ const nextConfig: NextConfig = {
         hostname: '*.vercel.app',
         protocol: 'https',
       },
+      {
+        hostname: 'komarev.com',
+        protocol: 'https',
+      },
     ],
   },
   reactStrictMode: true,

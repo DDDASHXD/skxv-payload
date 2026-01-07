@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-const UMAMI_URL = 'https://umami.arevodigital.dk'
+const UMAMI_URL = 'https://umami.skxv.dev'
 const UMAMI_USERNAME = 'admin'
 const UMAMI_PASSWORD = 'Aavlkdss7Xqqkusp7#'
 

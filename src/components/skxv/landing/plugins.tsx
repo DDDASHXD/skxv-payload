@@ -13,13 +13,19 @@ const Plugins = async () => {
   })
   return (
     <Card title="Plugins">
-      <p>This is a list of plugins for Payload CMS, which i have created or am working on.</p>
+      <p className="mb-4">
+        This is a list of plugins for Payload CMS, which i have created or am working on.
+      </p>
       <ul className="list-inside list-disc">
-        {plugins.docs.map((plugin) => (
-          <li key={plugin.id}>
-            <InlineLink href={plugin.link || ''}>{plugin.name}</InlineLink> - {plugin.description}
-          </li>
-        ))}
+        {plugins.docs.length > 0 ? (
+          plugins.docs.map((plugin) => (
+            <li key={plugin.id}>
+              <InlineLink href={plugin.link || ''}>{plugin.name}</InlineLink> - {plugin.description}
+            </li>
+          ))
+        ) : (
+          <p className="text-muted-foreground italic">(Coming soon)</p>
+        )}
       </ul>
     </Card>
   )

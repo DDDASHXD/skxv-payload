@@ -77,7 +77,7 @@ const Page = () => {
       />
       <div>
         <div className="flex w-full gap-4">
-          <div className="flex flex-col">
+          <div className="mb-4 flex flex-col">
             <div className="mb-2 flex flex-col gap-2 md:flex-row">
               <b>Sebastian Skov (SKXV)</b>
               <div className="flex gap-2">
@@ -88,6 +88,10 @@ const Page = () => {
             <p>
               UI/UX Designer and frontend web developer based in Roskilde, Denmark. Student at
               Roskilde University studying a humanitarian-technology bachelor.
+              <br />
+              <br />I also like to{' '}
+              <InlineLink href="https://photos.skxv.dev">take pictures</InlineLink>, although i'm
+              not particularly good at it.
             </p>
           </div>
           <FaceLooker basePath="/faces/" showDebug={false} width={150} height={150} />

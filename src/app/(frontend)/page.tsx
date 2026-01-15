@@ -25,6 +25,8 @@ import {
 // import Terminal from '@/components/skxv/terminal'
 // import CharacterMarquee from '@/components/skxv/character-marquee'
 import Plugins from '@/components/skxv/landing/plugins'
+import Blog from '@/components/skxv/landing/blog'
+import WorkingOn from '@/components/skxv/landing/working-on'
 
 // Revalidate this page every 60 seconds (ISR fallback)
 export const revalidate = 60
@@ -103,20 +105,7 @@ const Page = () => {
           className="text-2xl font-bold"
           speed={150}
         /> */}
-        <Card title="Currently working on" titlePosition="left">
-          <b>Arevo Plugins</b>
-          <p className="mb-2">
-            I&apos;m currently working on creating a centralized repository of plugins for Payload
-            CMS. All community plugins are currently found through an arbitrary GitHub tag, and i
-            would like to change that. Built under my Payload-specific website Arevo Digital, which
-            is managed by a friend of mine and me.
-          </p>
-          <Link href="https://plugins.arevodigital.dk" className="w-full">
-            <ActionButton icon={<ArrowRight className="size-4" />} className="w-full">
-              Visit Arevo Plugins
-            </ActionButton>
-          </Link>
-        </Card>
+        <WorkingOn />
         <div className="flex w-full gap-4">
           <Card title="Skills" titlePosition="left" className="w-full">
             <ul className="list-inside list-disc">
@@ -141,9 +130,7 @@ const Page = () => {
         </div>
         <RecentProjects />
         <Plugins />
-        <Card title="Blog" titlePosition="left">
-          <p>My blog is coming soon!</p>
-        </Card>
+        <Blog />
       </div>
     </>
   )

@@ -1,13 +1,10 @@
+import dynamic from 'next/dynamic'
 import { TimelineDesignVersion } from './config'
-import Timeline2 from './timeline2'
-import Timeline8 from './timeline8'
 
-type Timeline<T extends string = string> = Required<Record<TimelineDesignVersion, React.FC<any>>> &
-  Record<T, React.FC<any>>
-
-const timeline: Timeline = {
-  TIMELINE2: Timeline2,
-  TIMELINE8: Timeline8,
+// Use dynamic imports for code-splitting - components are only loaded when needed
+const timeline: Record<TimelineDesignVersion, React.ComponentType<any>> = {
+  TIMELINE2: dynamic(() => import('./timeline2')),
+  TIMELINE8: dynamic(() => import('./timeline8')),
 }
 
 export const TimelineBlock: React.FC<any> = (props) => {

@@ -1,20 +1,14 @@
-import Logos1 from '@/blocks/Logos/logos1'
-import Logos2 from '@/blocks/Logos/logos2'
-import Logos3 from '@/blocks/Logos/logos3'
-import Logos9 from '@/blocks/Logos/logos9'
-
+import dynamic from 'next/dynamic'
 import { LogosDesignVersion } from './config'
 
 type LogosVersionValue = LogosDesignVersion['value']
 
-type Logos<T extends string = string> = Required<Record<LogosVersionValue, React.FC<any>>> &
-  Record<T, React.FC<any>>
-
-const Logos: Logos = {
-  LOGOS1: Logos1,
-  LOGOS2: Logos2,
-  LOGOS3: Logos3,
-  LOGOS9: Logos9,
+// Use dynamic imports for code-splitting - components are only loaded when needed
+const Logos: Record<LogosVersionValue, React.ComponentType<any>> = {
+  LOGOS1: dynamic(() => import('@/blocks/Logos/logos1')),
+  LOGOS2: dynamic(() => import('@/blocks/Logos/logos2')),
+  LOGOS3: dynamic(() => import('@/blocks/Logos/logos3')),
+  LOGOS9: dynamic(() => import('@/blocks/Logos/logos9')),
 }
 
 export const LogosBlock: React.FC<any> = (props) => {

@@ -1,38 +1,23 @@
-import Cta1 from '@/blocks/Cta/cta1'
-import Cta3 from '@/blocks/Cta/cta3'
-import Cta4 from '@/blocks/Cta/cta4'
-import Cta5 from '@/blocks/Cta/cta5'
-import Cta6 from '@/blocks/Cta/cta6'
-import Cta7 from '@/blocks/Cta/cta7'
-import Cta10 from '@/blocks/Cta/cta10'
-import Cta11 from '@/blocks/Cta/cta11'
-import Cta12 from '@/blocks/Cta/cta12'
-import Cta13 from '@/blocks/Cta/cta13'
-import Cta15 from '@/blocks/Cta/cta15'
-import Cta16 from '@/blocks/Cta/cta16'
-import Cta17 from '@/blocks/Cta/cta17'
-
+import dynamic from 'next/dynamic'
 import { CtaDesignVersion } from './config'
 
 type CtaDesignVersionValue = CtaDesignVersion['value']
 
-type Cta<T extends string = string> = Required<Record<CtaDesignVersionValue, React.FC<any>>> &
-  Record<T, React.FC<any>>
-
-const ctas: Cta = {
-  CTA1: Cta1,
-  CTA3: Cta3,
-  CTA4: Cta4,
-  CTA5: Cta5,
-  CTA6: Cta6,
-  CTA7: Cta7,
-  CTA10: Cta10,
-  CTA11: Cta11,
-  CTA12: Cta12,
-  CTA13: Cta13,
-  CTA15: Cta15,
-  CTA16: Cta16,
-  CTA17: Cta17,
+// Use dynamic imports for code-splitting - components are only loaded when needed
+const ctas: Record<CtaDesignVersionValue, React.ComponentType<any>> = {
+  CTA1: dynamic(() => import('@/blocks/Cta/cta1')),
+  CTA3: dynamic(() => import('@/blocks/Cta/cta3')),
+  CTA4: dynamic(() => import('@/blocks/Cta/cta4')),
+  CTA5: dynamic(() => import('@/blocks/Cta/cta5')),
+  CTA6: dynamic(() => import('@/blocks/Cta/cta6')),
+  CTA7: dynamic(() => import('@/blocks/Cta/cta7')),
+  CTA10: dynamic(() => import('@/blocks/Cta/cta10')),
+  CTA11: dynamic(() => import('@/blocks/Cta/cta11')),
+  CTA12: dynamic(() => import('@/blocks/Cta/cta12')),
+  CTA13: dynamic(() => import('@/blocks/Cta/cta13')),
+  CTA15: dynamic(() => import('@/blocks/Cta/cta15')),
+  CTA16: dynamic(() => import('@/blocks/Cta/cta16')),
+  CTA17: dynamic(() => import('@/blocks/Cta/cta17')),
 }
 
 export const CtaBlock: React.FC<any> = (props) => {

@@ -96,14 +96,15 @@ export const Posts: CollectionConfig = {
         {
           fields: [
             {
-              name: 'bannerImage',
+              name: 'exerpt',
+              type: 'text',
+              label: 'Exerpt',
+            },
+            {
+              name: 'cover',
               type: 'upload',
               relationTo: 'media',
-              admin: {
-                description: 'Banner image displayed at the top of the blog post',
-                condition: (data) => data?.designVersion === 'BLOG20',
-                position: 'sidebar',
-              },
+              label: 'Cover image',
             },
             {
               name: 'content',
@@ -196,11 +197,6 @@ export const Posts: CollectionConfig = {
         },
       ],
     },
-    designVersionPreview(allPostDesignVersions, {
-      admin: {
-        position: 'sidebar',
-      },
-    }),
     {
       name: 'publishedAt',
       type: 'date',

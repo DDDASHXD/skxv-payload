@@ -1,20 +1,13 @@
+import dynamic from 'next/dynamic'
 import { AboutDesignVersion } from './config'
-import About1 from '@/blocks/About/about1'
-import About2 from '@/blocks/About/about2'
-import About3 from '@/blocks/About/about3'
-import About4 from '@/blocks/About/about4'
-import About5 from '@/blocks/About/about5'
 
-// Enforce required features but allow additional ones
-type About<T extends string = string> = Required<Record<AboutDesignVersion, React.FC<any>>> &
-  Record<T, React.FC<any>>
-
-const about: About = {
-  ABOUT1: About1,
-  ABOUT2: About2,
-  ABOUT3: About3,
-  ABOUT4: About4,
-  ABOUT5: About5,
+// Use dynamic imports for code-splitting - components are only loaded when needed
+const about: Record<AboutDesignVersion, React.ComponentType<any>> = {
+  ABOUT1: dynamic(() => import('@/blocks/About/about1')),
+  ABOUT2: dynamic(() => import('@/blocks/About/about2')),
+  ABOUT3: dynamic(() => import('@/blocks/About/about3')),
+  ABOUT4: dynamic(() => import('@/blocks/About/about4')),
+  ABOUT5: dynamic(() => import('@/blocks/About/about5')),
 }
 
 export const AboutBlock: React.FC<any> = (props) => {

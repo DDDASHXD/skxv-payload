@@ -1,66 +1,32 @@
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import React from 'react'
+import dynamic from 'next/dynamic'
 
 import type { Footer } from '@/payload-types'
-
-import Footer1 from './footer/footer1'
-import Footer2 from './footer/footer2'
-import Footer3 from './footer/footer3'
-import Footer4 from './footer/footer4'
-import Footer5 from './footer/footer5'
-import Footer6 from './footer/footer6'
-import Footer7 from './footer/footer7'
-import Footer8 from './footer/footer8'
 import { PublicContextProps } from '@/utilities/publicContextProps'
+
+// Use dynamic imports for code-splitting - components are only loaded when needed
+const footers: Record<string, React.ComponentType<any>> = {
+  '1': dynamic(() => import('./footer/footer1')),
+  '2': dynamic(() => import('./footer/footer2')),
+  '3': dynamic(() => import('./footer/footer3')),
+  '4': dynamic(() => import('./footer/footer4')),
+  '5': dynamic(() => import('./footer/footer5')),
+  '6': dynamic(() => import('./footer/footer6')),
+  '7': dynamic(() => import('./footer/footer7')),
+  '8': dynamic(() => import('./footer/footer8')),
+}
 
 export async function Footer({ publicContext }: { publicContext: PublicContextProps }) {
   const footer: Footer = await getCachedGlobal('footer', publicContext.locale, 2)()
 
   const footerType = footer.designVersion
 
-  switch (footerType) {
-    case '1':
-      return <Footer1 footer={footer} publicContext={publicContext} />
-    case '2':
-      return <Footer2 footer={footer} publicContext={publicContext} />
-    case '3':
-      return <Footer3 footer={footer} publicContext={publicContext} />
-    case '4':
-      return <Footer4 footer={footer} publicContext={publicContext} />
-    case '5':
-      return <Footer5 footer={footer} publicContext={publicContext} />
-    case '6':
-      return <Footer6 footer={footer} publicContext={publicContext} />
-    case '7':
-      return <Footer7 footer={footer} publicContext={publicContext} />
-    case '8':
-      return <Footer8 footer={footer} publicContext={publicContext} />
-  }
+  if (!footerType) return null
 
-  return null
+  const FooterComponent = footers[footerType]
 
-  // return (
-  //   <footer className="border-t border-border bg-black dark:bg-card text-white">
-  //     <div className="container py-8 gap-8 flex flex-col md:flex-row md:justify-between">
-  //       <Link className="flex items-center" href="/">
-  //         <picture>
-  //           <img
-  //             alt="Payload Logo"
-  //             className="max-w-24 invert-0"
-  //             src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/payload/src/admin/assets/images/payload-logo-light.svg"
-  //           />
-  //         </picture>
-  //       </Link>
+  if (!FooterComponent) return null
 
-  //       <div className="flex flex-col-reverse items-start md:flex-row gap-4 md:items-center">
-  //         <ThemeSelector />
-  //         <nav className="flex flex-col md:flex-row gap-4">
-  //           {navItems.map(({ link }, i) => {
-  //             return <CMSLink publicContext={publicContext} className="text-white" key={i} {...link} />
-  //           })}
-  //         </nav>
-  //       </div>
-  //     </div>
-  //   </footer>
-  // )
+  return <FooterComponent footer={footer} publicContext={publicContext} />
 }

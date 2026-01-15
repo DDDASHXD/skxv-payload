@@ -1,33 +1,21 @@
-import Gallery1 from '@/blocks/Gallery/gallery1'
-import Gallery2 from '@/blocks/Gallery/gallery2'
-import Gallery3 from '@/blocks/Gallery/gallery3'
-import Gallery4 from '@/blocks/Gallery/gallery4'
-import Gallery5 from '@/blocks/Gallery/gallery5'
-import Gallery6 from '@/blocks/Gallery/gallery6'
-import Gallery7 from '@/blocks/Gallery/gallery7'
-import { Gallery25 } from '@/blocks/Gallery/gallery25'
-import { Gallery26 } from '@/blocks/Gallery/gallery26'
+import dynamic from 'next/dynamic'
 import { Page } from '@/payload-types'
 import { allGalleryDesignVersions } from './config'
 
 // Extract just the value property from the design version objects
 type GalleryDesignVersionValue = (typeof allGalleryDesignVersions)[number]['value']
 
-type Gallery<T extends string = string> = Required<
-  Record<GalleryDesignVersionValue, React.FC<any>>
-> &
-  Record<T, React.FC<any>>
-
-const galleries: Gallery = {
-  GALLERY1: Gallery1,
-  GALLERY2: Gallery2,
-  GALLERY3: Gallery3,
-  GALLERY4: Gallery4,
-  GALLERY5: Gallery5,
-  GALLERY6: Gallery6,
-  GALLERY7: Gallery7,
-  GALLERY25: Gallery25,
-  GALLERY26: Gallery26,
+// Use dynamic imports for code-splitting - components are only loaded when needed
+const galleries: Record<GalleryDesignVersionValue, React.ComponentType<any>> = {
+  GALLERY1: dynamic(() => import('@/blocks/Gallery/gallery1')),
+  GALLERY2: dynamic(() => import('@/blocks/Gallery/gallery2')),
+  GALLERY3: dynamic(() => import('@/blocks/Gallery/gallery3')),
+  GALLERY4: dynamic(() => import('@/blocks/Gallery/gallery4')),
+  GALLERY5: dynamic(() => import('@/blocks/Gallery/gallery5')),
+  GALLERY6: dynamic(() => import('@/blocks/Gallery/gallery6')),
+  GALLERY7: dynamic(() => import('@/blocks/Gallery/gallery7')),
+  GALLERY25: dynamic(() => import('@/blocks/Gallery/gallery25').then((mod) => mod.Gallery25 || mod.default)),
+  GALLERY26: dynamic(() => import('@/blocks/Gallery/gallery26').then((mod) => mod.Gallery26 || mod.default)),
 }
 
 export const GalleryBlock: React.FC<Page['layout'][0]> = (props) => {

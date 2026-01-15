@@ -1,16 +1,13 @@
-import { BannerDesignVersion, allBannerDesignVersions } from './config'
-import Banner5 from './banner5'
-import Banner1 from './banner1'
+import dynamic from 'next/dynamic'
+import { BannerDesignVersion } from './config'
 
 // Extract the value property from BannerDesignVersion for use as keys
 type BannerVersionValue = BannerDesignVersion['value']
 
-type Banner<T extends string = string> = Required<Record<BannerVersionValue, React.FC<any>>> &
-  Record<T, React.FC<any>>
-
-const banner: Banner = {
-  BANNER1: Banner1,
-  BANNER5: Banner5,
+// Use dynamic imports for code-splitting - components are only loaded when needed
+const banner: Record<BannerVersionValue, React.ComponentType<any>> = {
+  BANNER1: dynamic(() => import('./banner1')),
+  BANNER5: dynamic(() => import('./banner5')),
 }
 
 export const BannerBlock: React.FC<any> = (props) => {

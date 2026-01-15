@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
     staticGenerationMaxConcurrency: 8,
     staticGenerationMinPagesPerWorker: 25,
   },
+  transpilePackages: ['@payloadcms/richtext-lexical'],
   images: {
     qualities: [100, 90],
     remotePatterns: [

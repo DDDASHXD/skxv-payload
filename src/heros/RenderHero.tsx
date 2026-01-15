@@ -1,106 +1,59 @@
 import React from 'react'
+import dynamic from 'next/dynamic'
 
 import type { Page } from '@/payload-types'
-
-import { Hero1 } from '@/heros/PageHero/hero1'
-import { Hero2 } from '@/heros/PageHero/hero2'
-import { Hero3 } from '@/heros/PageHero/hero3'
-import { Hero4 } from '@/heros/PageHero/hero4'
-import { Hero5 } from '@/heros/PageHero/hero5'
-import { Hero6 } from '@/heros/PageHero/hero6'
-import { Hero7 } from '@/heros/PageHero/hero7'
-import { Hero8 } from '@/heros/PageHero/hero8'
-import Hero9 from '@/heros/PageHero/hero9'
-import Hero10 from '@/heros/PageHero/hero10'
-import Hero11 from '@/heros/PageHero/hero11'
-import Hero12 from '@/heros/PageHero/hero12'
-import Hero13 from '@/heros/PageHero/hero13'
-import Hero14 from '@/heros/PageHero/hero14'
-import Hero15 from '@/heros/PageHero/hero15'
-import Hero16 from '@/heros/PageHero/hero16'
-import Hero18 from '@/heros/PageHero/hero18'
-import Hero20 from '@/heros/PageHero/hero20'
-import Hero21 from '@/heros/PageHero/hero21'
-import Hero24 from '@/heros/PageHero/hero24'
-import Hero25 from '@/heros/PageHero/hero25'
-import Hero26 from '@/heros/PageHero/hero26'
-import Hero27 from '@/heros/PageHero/hero27'
-import Hero28 from '@/heros/PageHero/hero28'
-import Hero29 from '@/heros/PageHero/hero29'
-import Hero30 from '@/heros/PageHero/hero30'
-import { Hero31 } from '@/heros/PageHero/hero31'
-import Hero32 from '@/heros/PageHero/hero32'
-import Hero33 from '@/heros/PageHero/hero33'
-import Hero34 from '@/heros/PageHero/hero34'
-import Hero35 from '@/heros/PageHero/hero35'
-import Hero36 from '@/heros/PageHero/hero36'
-import Hero37 from '@/heros/PageHero/hero37'
-import Hero38 from '@/heros/PageHero/hero38'
-import Hero39 from '@/heros/PageHero/hero39'
-import Hero40 from '@/heros/PageHero/hero40'
-import Hero45 from '@/heros/PageHero/hero45'
-import Hero50 from '@/heros/PageHero/hero50'
-import Hero51 from '@/heros/PageHero/hero51'
-import Hero53 from '@/heros/PageHero/hero53'
-import Hero55 from '@/heros/PageHero/hero55'
-import Hero57 from '@/heros/PageHero/hero57'
-import Hero101 from '@/heros/PageHero/hero101'
-import Hero112 from '@/heros/PageHero/hero112'
-import Hero195 from '@/heros/PageHero/hero195'
-import { Hero220 } from '@/heros/PageHero/hero220'
-import { Hero214 } from '@/heros/PageHero/hero214'
-import { Hero219 } from '@/heros/PageHero/hero219'
 import { PublicContextProps } from '@/utilities/publicContextProps'
 
-const heroes = {
-  1: Hero1,
-  2: Hero2,
-  3: Hero3,
-  4: Hero4,
-  5: Hero5,
-  6: Hero6,
-  7: Hero7,
-  8: Hero8,
-  9: Hero9,
-  10: Hero10,
-  11: Hero11,
-  12: Hero12,
-  13: Hero13,
-  14: Hero14,
-  15: Hero15,
-  16: Hero16,
-  18: Hero18,
-  20: Hero20,
-  21: Hero21,
-  24: Hero24,
-  25: Hero25,
-  26: Hero26,
-  27: Hero27,
-  28: Hero28,
-  29: Hero29,
-  30: Hero30,
-  31: Hero31,
-  32: Hero32,
-  33: Hero33,
-  34: Hero34,
-  35: Hero35,
-  36: Hero36,
-  37: Hero37,
-  38: Hero38,
-  39: Hero39,
-  40: Hero40,
-  45: Hero45,
-  50: Hero50,
-  51: Hero51,
-  53: Hero53,
-  55: Hero55,
-  57: Hero57,
-  101: Hero101,
-  112: Hero112,
-  195: Hero195,
-  220: Hero220,
-  214: Hero214,
-  219: Hero219,
+// Use dynamic imports for code-splitting - components are only loaded when needed
+const heroes: Record<number, React.ComponentType<any>> = {
+  1: dynamic(() => import('@/heros/PageHero/hero1').then((mod) => mod.Hero1 || mod.default)),
+  2: dynamic(() => import('@/heros/PageHero/hero2').then((mod) => mod.Hero2 || mod.default)),
+  3: dynamic(() => import('@/heros/PageHero/hero3').then((mod) => mod.Hero3 || mod.default)),
+  4: dynamic(() => import('@/heros/PageHero/hero4').then((mod) => mod.Hero4 || mod.default)),
+  5: dynamic(() => import('@/heros/PageHero/hero5').then((mod) => mod.Hero5 || mod.default)),
+  6: dynamic(() => import('@/heros/PageHero/hero6').then((mod) => mod.Hero6 || mod.default)),
+  7: dynamic(() => import('@/heros/PageHero/hero7').then((mod) => mod.Hero7 || mod.default)),
+  8: dynamic(() => import('@/heros/PageHero/hero8').then((mod) => mod.Hero8 || mod.default)),
+  9: dynamic(() => import('@/heros/PageHero/hero9')),
+  10: dynamic(() => import('@/heros/PageHero/hero10')),
+  11: dynamic(() => import('@/heros/PageHero/hero11')),
+  12: dynamic(() => import('@/heros/PageHero/hero12')),
+  13: dynamic(() => import('@/heros/PageHero/hero13')),
+  14: dynamic(() => import('@/heros/PageHero/hero14')),
+  15: dynamic(() => import('@/heros/PageHero/hero15')),
+  16: dynamic(() => import('@/heros/PageHero/hero16')),
+  18: dynamic(() => import('@/heros/PageHero/hero18')),
+  20: dynamic(() => import('@/heros/PageHero/hero20')),
+  21: dynamic(() => import('@/heros/PageHero/hero21')),
+  24: dynamic(() => import('@/heros/PageHero/hero24')),
+  25: dynamic(() => import('@/heros/PageHero/hero25')),
+  26: dynamic(() => import('@/heros/PageHero/hero26')),
+  27: dynamic(() => import('@/heros/PageHero/hero27')),
+  28: dynamic(() => import('@/heros/PageHero/hero28')),
+  29: dynamic(() => import('@/heros/PageHero/hero29')),
+  30: dynamic(() => import('@/heros/PageHero/hero30')),
+  31: dynamic(() => import('@/heros/PageHero/hero31').then((mod) => mod.Hero31 || mod.default)),
+  32: dynamic(() => import('@/heros/PageHero/hero32')),
+  33: dynamic(() => import('@/heros/PageHero/hero33')),
+  34: dynamic(() => import('@/heros/PageHero/hero34')),
+  35: dynamic(() => import('@/heros/PageHero/hero35')),
+  36: dynamic(() => import('@/heros/PageHero/hero36')),
+  37: dynamic(() => import('@/heros/PageHero/hero37')),
+  38: dynamic(() => import('@/heros/PageHero/hero38')),
+  39: dynamic(() => import('@/heros/PageHero/hero39')),
+  40: dynamic(() => import('@/heros/PageHero/hero40')),
+  45: dynamic(() => import('@/heros/PageHero/hero45')),
+  50: dynamic(() => import('@/heros/PageHero/hero50')),
+  51: dynamic(() => import('@/heros/PageHero/hero51')),
+  53: dynamic(() => import('@/heros/PageHero/hero53')),
+  55: dynamic(() => import('@/heros/PageHero/hero55')),
+  57: dynamic(() => import('@/heros/PageHero/hero57')),
+  101: dynamic(() => import('@/heros/PageHero/hero101')),
+  112: dynamic(() => import('@/heros/PageHero/hero112')),
+  195: dynamic(() => import('@/heros/PageHero/hero195')),
+  220: dynamic(() => import('@/heros/PageHero/hero220').then((mod) => mod.Hero220 || mod.default)),
+  214: dynamic(() => import('@/heros/PageHero/hero214').then((mod) => mod.Hero214 || mod.default)),
+  219: dynamic(() => import('@/heros/PageHero/hero219').then((mod) => mod.Hero219 || mod.default)),
 }
 
 export const RenderHero: React.FC<Page['hero'] & { publicContext: PublicContextProps }> = (

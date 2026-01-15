@@ -7,13 +7,14 @@ import RichText from '@/components/RichText'
 import localization from '@/localization.config'
 import { PublicContextProps } from '@/utilities/publicContextProps'
 
-const SingleBlogPage = async ({ params }: { params: { slug: string } }) => {
+const SingleBlogPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params
   const payload = await getPayload({ config: configPromise })
   const postRequest = await payload.find({
     collection: 'posts',
     where: {
       slug: {
-        equals: params.slug,
+        equals: slug,
       },
     },
   })

@@ -32,7 +32,6 @@ import {
 import { slugField } from '@/fields/slug'
 import { serverUrl as NEXT_PUBLIC_SERVER_URL } from '@/config/server'
 import { Breadcrumb } from '@payloadcms/plugin-nested-docs/types'
-import { designVersionPreview } from '@/components/AdminDashboard/DesignVersionPreview/config'
 import { calculateReadTime } from './hooks/calculcateReadTime'
 
 export const allPostDesignVersions = [
@@ -40,11 +39,6 @@ export const allPostDesignVersions = [
     label: 'BLOG18',
     value: 'BLOG18',
     image: '/admin/previews/blog/blog18.jpeg',
-  },
-  {
-    label: 'BLOG20',
-    value: 'BLOG20',
-    image: '/admin/previews/blog/blog20.jpeg',
   },
 ]
 

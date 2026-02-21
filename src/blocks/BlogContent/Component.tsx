@@ -1,6 +1,5 @@
 import { Post } from '@/payload-types'
 import { allPostDesignVersions } from '@/collections/Posts/index'
-import { Blog20 } from './blog20'
 import { Blog18 } from './blog18'
 import { PublicContextProps } from '@/utilities/publicContextProps'
 
@@ -15,7 +14,6 @@ type BlogContent<T extends string = string> = Required<
 
 const blog: BlogContent = {
   BLOG18: Blog18,
-  BLOG20: Blog20,
 }
 
 /**
@@ -26,13 +24,5 @@ const blog: BlogContent = {
 export const BlogContentBlock: React.FC<Post & { publicContext: PublicContextProps }> = (props) => {
   if (!props.content) return null
 
-  const { designVersion } = props || {}
-
-  if (!designVersion) return null
-
-  const BlogContentToRender = blog[designVersion]
-
-  if (!BlogContentToRender) return null
-
-  return <BlogContentToRender {...props} />
+  return <Blog18 {...props} />
 }

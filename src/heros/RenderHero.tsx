@@ -6,14 +6,14 @@ import { PublicContextProps } from '@/utilities/publicContextProps'
 
 // Use dynamic imports for code-splitting - components are only loaded when needed
 const heroes: Record<number, React.ComponentType<any>> = {
-  1: dynamic(() => import('@/heros/PageHero/hero1').then((mod) => mod.Hero1 || mod.default)),
-  2: dynamic(() => import('@/heros/PageHero/hero2').then((mod) => mod.Hero2 || mod.default)),
-  3: dynamic(() => import('@/heros/PageHero/hero3').then((mod) => mod.Hero3 || mod.default)),
-  4: dynamic(() => import('@/heros/PageHero/hero4').then((mod) => mod.Hero4 || mod.default)),
-  5: dynamic(() => import('@/heros/PageHero/hero5').then((mod) => mod.Hero5 || mod.default)),
-  6: dynamic(() => import('@/heros/PageHero/hero6').then((mod) => mod.Hero6 || mod.default)),
-  7: dynamic(() => import('@/heros/PageHero/hero7').then((mod) => mod.Hero7 || mod.default)),
-  8: dynamic(() => import('@/heros/PageHero/hero8').then((mod) => mod.Hero8 || mod.default)),
+  1: dynamic(() => import('@/heros/PageHero/hero1').then((mod) => mod.Hero1)),
+  2: dynamic(() => import('@/heros/PageHero/hero2').then((mod) => mod.Hero2)),
+  3: dynamic(() => import('@/heros/PageHero/hero3').then((mod) => mod.Hero3)),
+  4: dynamic(() => import('@/heros/PageHero/hero4').then((mod) => mod.Hero4)),
+  5: dynamic(() => import('@/heros/PageHero/hero5').then((mod) => mod.Hero5)),
+  6: dynamic(() => import('@/heros/PageHero/hero6').then((mod) => mod.Hero6)),
+  7: dynamic(() => import('@/heros/PageHero/hero7').then((mod) => mod.Hero7)),
+  8: dynamic(() => import('@/heros/PageHero/hero8').then((mod) => mod.Hero8)),
   9: dynamic(() => import('@/heros/PageHero/hero9')),
   10: dynamic(() => import('@/heros/PageHero/hero10')),
   11: dynamic(() => import('@/heros/PageHero/hero11')),
@@ -32,7 +32,7 @@ const heroes: Record<number, React.ComponentType<any>> = {
   28: dynamic(() => import('@/heros/PageHero/hero28')),
   29: dynamic(() => import('@/heros/PageHero/hero29')),
   30: dynamic(() => import('@/heros/PageHero/hero30')),
-  31: dynamic(() => import('@/heros/PageHero/hero31').then((mod) => mod.Hero31 || mod.default)),
+  31: dynamic(() => import('@/heros/PageHero/hero31').then((mod) => mod.Hero31)),
   32: dynamic(() => import('@/heros/PageHero/hero32')),
   33: dynamic(() => import('@/heros/PageHero/hero33')),
   34: dynamic(() => import('@/heros/PageHero/hero34')),
@@ -51,9 +51,9 @@ const heroes: Record<number, React.ComponentType<any>> = {
   101: dynamic(() => import('@/heros/PageHero/hero101')),
   112: dynamic(() => import('@/heros/PageHero/hero112')),
   195: dynamic(() => import('@/heros/PageHero/hero195')),
-  220: dynamic(() => import('@/heros/PageHero/hero220').then((mod) => mod.Hero220 || mod.default)),
-  214: dynamic(() => import('@/heros/PageHero/hero214').then((mod) => mod.Hero214 || mod.default)),
-  219: dynamic(() => import('@/heros/PageHero/hero219').then((mod) => mod.Hero219 || mod.default)),
+  220: dynamic(() => import('@/heros/PageHero/hero220').then((mod) => mod.Hero220)),
+  214: dynamic(() => import('@/heros/PageHero/hero214').then((mod) => mod.Hero214)),
+  219: dynamic(() => import('@/heros/PageHero/hero219').then((mod) => mod.Hero219)),
 }
 
 export const RenderHero: React.FC<Page['hero'] & { publicContext: PublicContextProps }> = (

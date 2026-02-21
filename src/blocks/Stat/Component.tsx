@@ -4,7 +4,7 @@ import { StatDesignVersion } from './config'
 type StatDesignVersionValue = StatDesignVersion['value']
 
 // Use dynamic imports for code-splitting - components are only loaded when needed
-const stat: Record<StatDesignVersionValue, React.ComponentType<any>> = {
+const stat: Record<string, React.ComponentType<any>> = {
   STAT1: dynamic(() => import('@/blocks/Stat/stat1')),
   STAT2: dynamic(() => import('@/blocks/Stat/stat2')),
   STAT4: dynamic(() => import('@/blocks/Stat/stat4')),

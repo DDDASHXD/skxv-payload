@@ -4,7 +4,7 @@ import { CtaDesignVersion } from './config'
 type CtaDesignVersionValue = CtaDesignVersion['value']
 
 // Use dynamic imports for code-splitting - components are only loaded when needed
-const ctas: Record<CtaDesignVersionValue, React.ComponentType<any>> = {
+const ctas: Record<string, React.ComponentType<any>> = {
   CTA1: dynamic(() => import('@/blocks/Cta/cta1')),
   CTA3: dynamic(() => import('@/blocks/Cta/cta3')),
   CTA4: dynamic(() => import('@/blocks/Cta/cta4')),

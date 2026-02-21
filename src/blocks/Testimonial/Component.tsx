@@ -4,7 +4,7 @@ import { TestimonialDesignVersion } from './config'
 type TestimonialDesignVersionValue = TestimonialDesignVersion['value']
 
 // Use dynamic imports for code-splitting - components are only loaded when needed
-const testimonial: Record<TestimonialDesignVersionValue, React.ComponentType<any>> = {
+const testimonial: Record<string, React.ComponentType<any>> = {
   TESTIMONIAL1: dynamic(() => import('@/blocks/Testimonial/testimonial1')),
   TESTIMONIAL2: dynamic(() => import('@/blocks/Testimonial/testimonial2')),
   TESTIMONIAL3: dynamic(() => import('@/blocks/Testimonial/testimonial3')),

@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import { FaqDesignVersion } from './config'
 
 // Use dynamic imports for code-splitting - components are only loaded when needed
-const faq: Record<FaqDesignVersion, React.ComponentType<any>> = {
+const faq: Record<string, React.ComponentType<any>> = {
   FAQ1: dynamic(() => import('@/blocks/Faq/faq1')),
   FAQ2: dynamic(() => import('@/blocks/Faq/faq2')),
   FAQ3: dynamic(() => import('@/blocks/Faq/faq3')),

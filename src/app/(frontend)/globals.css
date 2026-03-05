@@ -172,6 +172,12 @@
   }
 }
 
+* {
+  cursor:
+    url('/cursor.png') 0 0,
+    pointer !important;
+}
+
 html {
   opacity: 0;
 }
@@ -291,4 +297,10 @@ a {
   100% {
     opacity: 1;
   }
+}
+
+.cursor-pointer {
+  cursor:
+    url('/cursor.png') 0 0,
+    pointer;
 }

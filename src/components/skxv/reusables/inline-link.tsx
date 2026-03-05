@@ -9,7 +9,7 @@ interface InlineLinkProps extends React.ComponentProps<typeof Link> {
 
 const InlineLink = ({ children, className, ...props }: InlineLinkProps) => {
   return (
-    <Link className={cn('bg-muted hover:bg-accent underline', className)} {...props}>
+    <Link className={cn('bg-muted hover:bg-accent cursor-pointer underline', className)} {...props}>
       {children}
     </Link>
   )

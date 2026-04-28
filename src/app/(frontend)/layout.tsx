@@ -22,6 +22,7 @@ import { PublicContextProps } from '@/utilities/publicContextProps'
 import Script from 'next/script'
 
 import './globals.css'
+import MusicPlayer from '@/components/skxv/music-player'
 
 // Change fonts by changing class Geist_Mono or Geist.
 // No change in tailwind.config.mjs needed (Because it's already synced via --font-mono and --font-sans variables). Just make sure, that these variables stay.
@@ -132,8 +133,9 @@ export default async function RootLayout({
         />
         <Providers>
           <Analytics />
-          <div className="mx-auto flex w-full max-w-screen-md flex-col p-4">
+          <div className="mx-auto flex w-full max-w-screen-md flex-col p-4 pb-24">
             {children}
+            <MusicPlayer />
             <Footer />
           </div>
         </Providers>

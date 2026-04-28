@@ -6,7 +6,7 @@ import { en } from '@payloadcms/translations/languages/en'
 import { de } from '@payloadcms/translations/languages/de'
 
 import { OAuth2Plugin } from 'payload-oauth2'
-import { payloadMCP } from '@arevo/payload-mcp'
+// import { payloadMCP } from '@arevo/payload-mcp'
 
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
 import { nestedDocsPlugin } from '@payloadcms/plugin-nested-docs'
@@ -199,11 +199,11 @@ export default buildConfig({
   csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
   globals: [ThemeConfig, Header, Footer, PageConfig],
   plugins: [
-    payloadMCP({
-      endpoint: '/mcp',
-      serverName: 'skxv-payload',
-      token: process.env.PAYLOAD_MCP_TOKEN,
-    }),
+    // payloadMCP({
+    //   endpoint: '/mcp',
+    //   serverName: 'skxv-payload',
+    //   token: process.env.PAYLOAD_MCP_TOKEN,
+    // }),
     storageAdapter,
     redirectsPlugin({
       collections: ['pages', 'posts'],
